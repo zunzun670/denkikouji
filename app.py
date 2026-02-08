@@ -1,17 +1,18 @@
 import streamlit as st
 
 question = "一般住宅の屋内配線で「VVFケーブル」を使用する目的として最も適切なのはどれ？" 
-choices = ｛ 
+choices = { 
            "1": "高電圧を長距離送電するため", 
            "2": "屋内の固定配線に使うため", 
            "3": "地中に直接埋設するため", 
-           "4": "防爆エリアで使用するため" ｝
+           "4": "防爆エリアで使用するため" }
 correct = "2" 
 
 st.write("### 問題") 
 st.write(question) 
 
-selected = st.radio("選択肢を選んでね", choices, index=None)
+selected_key = st.radio("選択肢を選んでね", list(choices.keys()))
+st.write("選んだ内容：", choices[selected_key])
 
 if selected is not None: 
  if selected.startswith(correct): 
