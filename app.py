@@ -12,7 +12,22 @@ questions = [
 "correct": "2",
 "info": "VVFケーブルは住宅などの屋内の固定配線に使われるケーブルだね！絶縁体と被覆が一体化していて施工しやすいのが特徴だよ。"
     }
+  { 
+       "q": "電線の太さを表す単位はどれ？", 
+"choices": [ 
+         "1: mm²", 
+         "2: kg", 
+         "3: V", 
+         "4: A" 
+], 
+"correct": "1", 
+"info": "電線の太さはmm²（平方ミリメートル）で表すよ。太さが大きいほど電流を多く流せるんだ。" 
+} 
 ]
+
+
+
+   
 
 if "index" not in st.session_state:
            st.session_state.index = 0
