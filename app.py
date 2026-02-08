@@ -16,5 +16,5 @@ selected = st.radio("選択肢を選んでね", choices, index=None)
 if selected:
     if selected.startswith(correct):
         st.success("正解！☺")
-        st.info("VVFケーブルは住宅などの屋内の固定配線に使われるケーブルだね！絶縁体と被覆が一体化していて施工しやすいのが特徴だよ。") 
+        st.info("VVFケーブルは住宅などの屋内の固定配線に使われるケーブルだね！\n絶縁体と被覆が一体化していて施工しやすいのが特徴だよ。") 
     else: st.error("ざんねん😭")
