@@ -50,4 +50,4 @@ if st.button("次へ"):
     st.session_state.index += 1
     if st.session_state.index >= len(questions): 
                st.session_state.index = 0 # 最後まで行ったら最初に戻る
-    st.experimental_rerun()
+    st.rerun()
