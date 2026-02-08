@@ -11,9 +11,9 @@ correct = "2"
 st.write("### 問題") 
 st.write(question) 
 
-selected = st.radio("選択肢を選んでね", choices)
+selected = st.radio("選択肢を選んでね", choices, index=None)
 
-if selected is not None:
+if selected:
     if selected.startswith(correct):
         st.success("正解！☺")
         st.info("VVFケーブルは住宅などの屋内の固定配線に使われるケーブルだね！絶縁体と被覆が一体化していて施工しやすいのが特徴だよ。") 
