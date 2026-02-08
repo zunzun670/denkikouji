@@ -1,4 +1,4 @@
-import streamlit as st 
+import streamlit as st
 st.title("電気工事士2種・クイズ")
 
 question="一般住宅の屋内配線で「VVFケーブル」を使用する目的として最も適切なのはどれ？"
@@ -11,7 +11,7 @@ correct = "2"
 st.write("### 問題") 
 st.write(question)
 
-selected = st.radio("選択肢を選んでね", choices)
+selected = st.radio("選択肢を選んでね", choices, index=None)
 
 if selected is not None:
 　if selected.startswith(correct):
