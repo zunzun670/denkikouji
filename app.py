@@ -57,7 +57,7 @@ questions = [
     },
 
    { "q": "この図記号が示す機器はどれ？", 
-    "img": "images/images1.jpg", 
+    "img": "images1.jpg", 
     "choices": [ 
        "1: 配線用遮断器（ブレーカ）", 
        "2: 漏電遮断器", 
