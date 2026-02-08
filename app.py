@@ -55,7 +55,7 @@ questions = [
  "correct": "1", 
  "info": "三路スイッチは階段や廊下など、2か所から1つの照明を操作したいときに使うよ。" 
     }
-   
+]
 
 if "index" not in st.session_state:
            st.session_state.index = 0
