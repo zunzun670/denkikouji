@@ -81,11 +81,11 @@ st.write("### 問題")
 st.write(current["q"])
 if "img" in current: st.image(current["img"])
 
-selected = st.radio("選択肢を選んでね", current["choices"], index=0)
+selected = st.radio("選択肢を選んでね", current["choices"], index=none)
 
 if selected:
-    if selected.startswith(current["correct"]):
-        st.success("正解！☺")
+    if selected is not none(current["correct"]):
+        st.success("正解！😊")
         st.info(current["info"])
     else: st.error("ざんねん😭")
 
