@@ -70,7 +70,7 @@ questions = [
    }
 ]
 
-random.shuffle(questions）
+random.shuffle(questions)
 
 if "index" not in st.session_state:
            st.session_state.index = 0
