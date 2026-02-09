@@ -81,20 +81,31 @@ st.write("### 問題")
 st.write(current["q"])
 if "img" in current: st.image(current["img"])
 
+
+if "answered" not in st.session_state:
+    st.session_state.answered = False
+
+
 selected = st.radio("選択肢を選んでね", current["choices"], index=None)
+
 
 if st.button("回答する"):
     if selected is None:
         st.warning("選択肢を選んでね！")
     else:
-        if selected.startswith(current["correct"]):
-            st.success("正解！😊")
-            st.info(current["info"])
-        else:
-            st.error("ざんねん😭")
+        st.session_state.answered = True
+        st.session_state.selected = selected  # ★ここが重要！
 
-if st.button("次へ"): 
-    st.session_state.index += 1
-    if st.session_state.index >= len(questions): 
-               st.session_state.index = 0 # 最後まで行ったら最初に戻る
-    st.rerun()
+
+if st.session_state.answered:
+    if st.session_state.selected.startswith(current["correct"]):
+        st.success("正解！😊")
+        st.info(current["info"])
+    else:
+        st.error("ざんねん😭")
+
+    
+    if st.button("次へ"):
+        st.session_state.index += 1
+        st.session_state.answered = False
+        st.rerun()
