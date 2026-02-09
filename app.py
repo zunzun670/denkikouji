@@ -89,7 +89,7 @@ if selected:
         if selected.startswith(current["correct"]):
             st.success("正解！😊")
             st.info(current["info"])
-    else: st.error("ざんねん😭")
+        else: st.error("ざんねん😭")
 
 if st.button("次へ"): 
     st.session_state.index += 1
