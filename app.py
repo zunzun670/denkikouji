@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 questions = [
    {
@@ -69,6 +70,7 @@ questions = [
    }
 ]
 
+random.shuffle(questions）
 if "index" not in st.session_state:
            st.session_state.index = 0
 
