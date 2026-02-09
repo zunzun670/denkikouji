@@ -70,30 +70,38 @@ questions = [
    }
 ]
 
-random.shuffle(questions)
+# --- 最初の1回だけシャッフル ---
+if "questions" not in st.session_state:
+    st.session_state.questions = questions.copy()
+    random.shuffle(st.session_state.questions)
 
+# --- index 初期化 ---
 if "index" not in st.session_state:
-           st.session_state.index = 0
+    st.session_state.index = 0
 
-current = questions[st.session_state.index] 
+current = st.session_state.questions[st.session_state.index]
 
-st.write("### 問題") 
+st.write("### 問題")
 st.write(current["q"])
-if "img" in current: st.image(current["img"])
+if "img" in current:
+    st.image(current["img"])
 
+# --- 回答済みフラグ ---
 if "answered" not in st.session_state:
     st.session_state.answered = False
 
 selected = st.radio("選択肢を選んでね", current["choices"], index=None)
 
-if st.button("回答する"):
+# --- 回答ボタン ---
+if st.button("回答する") and not st.session_state.answered:
     if selected is None:
         st.warning("選択肢を選んでね！")
     else:
         st.session_state.selected = selected
-        st.session_state.answered = True   # ★ここで初めて回答済みにする
-        st.rerun()                         # ★回答後の画面に切り替える
+        st.session_state.answered = True
+        st.rerun()
 
+# --- 回答後の表示 ---
 if st.session_state.answered:
     if st.session_state.selected.startswith(current["correct"]):
         st.success("正解！😊")
@@ -105,3 +113,5 @@ if st.session_state.answered:
         st.session_state.index += 1
         st.session_state.answered = False
         st.rerun()
+
+
