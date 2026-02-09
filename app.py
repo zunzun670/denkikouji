@@ -86,12 +86,13 @@ if "answered" not in st.session_state:
 
 selected = st.radio("選択肢を選んでね", current["choices"], index=None)
 
-if st.button("回答する") and not st.session_state.answered:
+if st.button("回答する"):
     if selected is None:
         st.warning("選択肢を選んでね！")
     else:
-        st.session_state.answered = True
-        st.session_state.selected = selected  # ★選んだ答えを保存
+        st.session_state.selected = selected
+        st.session_state.answered = True   # ★ここで初めて回答済みにする
+        st.rerun()                         # ★回答後の画面に切り替える
 
 if st.session_state.answered:
     if st.session_state.selected.startswith(current["correct"]):
