@@ -85,7 +85,8 @@ selected = st.radio("選択肢を選んでね", current["choices"], index=None)
 
 
 if selected:
-    if selected is not None(current["correct"]):
+    if selected is not None:
+        if.selected.startwith(current["correct"]):
         st.success("正解！😊")
         st.info(current["info"])
     else: st.error("ざんねん😭")
