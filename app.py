@@ -83,6 +83,7 @@ if "img" in current: st.image(current["img"])
 
 selected = st.radio("選択肢を選んでね", current["choices"], index=none)
 
+
 if selected:
     if selected is not none(current["correct"]):
         st.success("正解！😊")
