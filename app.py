@@ -143,6 +143,8 @@ current = st.session_state.questions[st.session_state.index]
 
 st.write("### 問題")
 st.write(current["q"])
+if "source" in current:
+    st.caption(current["source"])
 if "img" in current:
     st.image(current["img"])
 
