@@ -142,9 +142,8 @@ if st.session_state.answered:
         st.success("正解！😊🎉")
 # 解説を改行つきで表示 
         if "info" in current:
-            st.markdown(current["info"])    
-       
-   else:
+            st.markdown(current["info"]) 
+        else:
         st.error("ざんねん😭")
 
     if st.button("次へ"):
