@@ -144,7 +144,7 @@ if st.session_state.answered:
         if "info" in current:
             st.markdown(current["info"]) 
         else:
-        st.error("ざんねん😭")
+            st.error("ざんねん😭")
 
     if st.button("次へ"):
         st.session_state.index += 1
