@@ -141,7 +141,8 @@ if st.session_state.answered:
     if st.session_state.selected.startswith(current["correct"]):
         st.success("正解！😊🎉")
 # 解説を改行つきで表示 
-   if "info" in current: st.markdown(current["info"])    
+   if "info" in current: 
+      st.markdown(current["info"])    
        
    else:
         st.error("ざんねん😭")
