@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+st.markdown(""" <style> .stRadio > div { line-height: 1.8; /* 行間を広げる */ } </style> """, unsafe_allow_html=True)
 
 questions = [
    {
