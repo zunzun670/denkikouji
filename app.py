@@ -151,17 +151,21 @@ if st.button("回答する") and not st.session_state.answered:
 
 # --- 回答後の表示 ---
 if st.session_state.answered:
+
+    # 正解判定
     if st.session_state.selected.startswith(current["correct"]):
         st.success("正解！😊🎉")
-# 解説を改行つきで表示 
-        if "info" in current:
-            st.markdown(current["info"]) 
-        else:
-            st.error("ざんねん😭")
 
+        # 解説
+        if "info" in current:
+            st.markdown(current["info"])
+
+    else:
+        st.error("ざんねん😭")
+
+    # 次へボタン
     if st.button("次へ"):
         st.session_state.index += 1
         st.session_state.answered = False
         st.rerun()
-
 
