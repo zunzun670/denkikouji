@@ -7,14 +7,29 @@ st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡")
 st.markdown("""
     <style>
     .stApp { background-color: #f8f9fa; }
+        /* 問題ボックスのデザイン（ここを修正） */
     .question-container {
         background-color: #ffffff;
-        padding: 2rem;
+        padding: 1.5rem; /* スマホ向けに少し余白を削る */
         border-radius: 15px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         border-left: 5px solid #4CAF50;
         margin-bottom: 20px;
+        
+        /* ↓ここを追加！中央に寄せて幅を最適化するよ */
+        width: 100%;
+        max-width: 500px; 
+        margin-left: auto;
+        margin-right: auto;
     }
+    
+    /* 質問のテキスト自体も中央に寄せたい場合はこれ */
+    .question-container h3 {
+        text-align: left; /* 左揃えが良ければこのまま、中央なら center */
+        margin: 0;
+        line-height: 1.4;
+    }
+
     .info-container {
         background-color: #e8f4ea;
         padding: 1.5rem;
