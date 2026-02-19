@@ -54,7 +54,7 @@ if st.session_state.mode == "top":
     with col1:
         if st.button("🟢 まずはここから", use_container_width=True):
 # --- ここで初期化を行う！ ---
-            data = [
+         data = [
     {
         "q":"一般住宅の屋内配線で「VVFケーブル」を使用する目的として最も適切なのはどれ？",
         "choices": [ "イ: 高電圧を長距離送電するため", "ロ: 屋内の固定配線に使うため", "ハ: 地中に直接埋設するため", "ニ: 防爆エリアで使用するため" ],
