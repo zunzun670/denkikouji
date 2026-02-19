@@ -6,7 +6,6 @@ st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡")
 
 st.markdown(""
     <style>
-        /* 1. 全体の余白を消す（再確認） */
     .block-container {
         padding: 1.5rem 1rem !important;
         max-width: 100% !important;
