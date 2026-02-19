@@ -5,22 +5,20 @@ import random
 st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡", layout="wide")
 
 # --- 2. モダンCSS（スマホ余白対策版） ---
-st.markdown("""
-    st.markdown("""
+ st.markdown("""
     <style>
-    /* 1. 【最強】Streamlit全体の余白・最大幅を完全にゼロにする */
+    /* 1. Reset Streamlit default margins */
     [data-testid="stAppViewMain"] .main .block-container {
-        padding: 1rem 0.5rem !important; /* 上下に少し、左右は最小限 */
+        padding: 1rem 0.5rem !important;
         max-width: 100% !important;
         margin: 0 !important;
     }
     
-    /* 2. 背景を白っぽくして全体を一体化させる（余白感を感じさせない） */
     .stApp {
         background-color: #f8f9fa;
     }
 
-    /* 3. 問題ボックスを画面幅いっぱいに強制 */
+    /* 2. Question card design */
     .question-container {
         background-color: #ffffff;
         padding: 1.2rem;
@@ -29,10 +27,10 @@ st.markdown("""
         border-left: 8px solid #4CAF50;
         margin: 0 0 20px 0 !important;
         width: 100% !important;
-        box-sizing: border-box; /* パディングを含めた幅にする */
+        box-sizing: border-box;
     }
 
-    /* 4. ラジオボタン（選択肢）をカード風にして幅を広げる */
+    /* 3. Radio button customization */
     div[role="radiogroup"] {
         display: flex;
         flex-direction: column;
@@ -50,12 +48,11 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
-    /* 5. 画像やボタンも100%にする */
+    /* 4. Full width for buttons and images */
     .stButton > button, .stImage > img {
         width: 100% !important;
     }
     
-    /* タイトルの文字がはみ出さないように調整 */
     h1, h2, h3 {
         word-break: break-all;
     }
