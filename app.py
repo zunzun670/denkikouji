@@ -108,7 +108,7 @@ st.session_state.questions = data.copy() # ここで session_state に入れる
     with col2:
         if st.button("🔵 過去問に挑戦", use_container_width=True):
 # --- 過去問用のデータで初期化 ---
-            data = [ 
+        data = [ 
      { "q": "図のような回路で、端子a-b間の合成抵抗[Ω]は。",
         "img": "images2.jpg", 
         "choices": ["イ. 1", "ロ. 2", "ハ. 3", "ニ. 4"],
@@ -147,15 +147,15 @@ st.session_state.questions = data.copy() # ここで session_state に入れる
         "source": "出典：令和7年度下期 第二種電気工事士試験（学科）"
     }
 ]
-            st.session_state.questions = data.copy()
-            random.shuffle(st.session_state.questions)
-            st.session_state.index = 0
-            st.session_state.answered = False
-            st.session_state.score = 0
-            st.session_state.combo = 0
+        st.session_state.questions = data.copy()
+        random.shuffle(st.session_state.questions)
+        st.session_state.index = 0
+        st.session_state.answered = False
+        st.session_state.score = 0
+        st.session_state.combo = 0
             
-            st.session_state.mode = "quiz"
-            st.rerun()
+        st.session_state.mode = "quiz"
+        st.rerun()
 
 # --- 3. セッション管理の初期化 ---
 if "questions" not in st.session_state:
