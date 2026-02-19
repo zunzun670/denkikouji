@@ -6,64 +6,58 @@ st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡", layo
 
 # --- 2. モダンCSS（スマホ余白対策版） ---
 st.markdown("""
+    st.markdown("""
     <style>
-    /* スマホの左右の巨大な余白を消す */
-    .block-container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        padding-top: 2rem !important;
+    /* 1. 【最強】Streamlit全体の余白・最大幅を完全にゼロにする */
+    [data-testid="stAppViewMain"] .main .block-container {
+        padding: 1rem 0.5rem !important; /* 上下に少し、左右は最小限 */
         max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    /* 2. 背景を白っぽくして全体を一体化させる（余白感を感じさせない） */
+    .stApp {
+        background-color: #f8f9fa;
     }
 
-    /* 問題ボックスのデザイン */
+    /* 3. 問題ボックスを画面幅いっぱいに強制 */
     .question-container {
         background-color: #ffffff;
         padding: 1.2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         border-left: 8px solid #4CAF50;
-        margin: 10px 0 20px 0;
+        margin: 0 0 20px 0 !important;
         width: 100% !important;
-        box-sizing: border-box;
+        box-sizing: border-box; /* パディングを含めた幅にする */
     }
 
-    /* 問題文の文字設定 */
-    .question-container h3 {
-        font-size: 1.2rem;
-        text-align: left;
-        line-height: 1.5;
-        margin: 0;
-        word-wrap: break-word;
-    }
-
-    /* ラジオボタン（選択肢）の幅を広げる */
+    /* 4. ラジオボタン（選択肢）をカード風にして幅を広げる */
     div[role="radiogroup"] {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         width: 100% !important;
     }
     div[role='radiogroup'] > label {
-        width: 100% !important;
-        display: flex !important;
-        align-items: center;
-        padding: 10px;
         background-color: #ffffff;
-        border-radius: 8px;
-        transition: 0.3s;
-        border: 1px solid #eee;
-        margin-bottom: 5px;
+        border: 1px solid #dee2e6;
+        padding: 15px !important;
+        border-radius: 10px;
+        width: 100% !important;
+        margin: 0 !important;
+        display: flex !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
-    /* 回答ボタンを横いっぱいに */
-    .stButton > button {
+    /* 5. 画像やボタンも100%にする */
+    .stButton > button, .stImage > img {
         width: 100% !important;
     }
-
-    /* 解説ボックス */
-    .info-container {
-        background-color: #e8f4ea;
-        padding: 1.5rem;
-        border-radius: 10px;
-        border-left: 5px solid #2e7d32;
-        margin-top: 15px;
+    
+    /* タイトルの文字がはみ出さないように調整 */
+    h1, h2, h3 {
+        word-break: break-all;
     }
     </style>
     """, unsafe_allow_html=True)
