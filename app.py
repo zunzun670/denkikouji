@@ -6,16 +6,13 @@ st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡")
 
 st.markdown("""
     <style>
-    .stApp { background-color: #f8f9fa; }
-            /* ⚡【追加】スマホで左右にできる巨大な余白を強制解除する */
+        /* 1. 全体の余白を消す（再確認） */
     .block-container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        padding-top: 2rem !important;
+        padding: 1.5rem 1rem !important;
         max-width: 100% !important;
     }
 
-    /* 問題ボックスのデザイン（最新版） */
+    /* 2. 問題ボックスを強制的に横いっぱいに広げる */
     .question-container {
         background-color: #ffffff;
         padding: 1.2rem;
@@ -23,35 +20,30 @@ st.markdown("""
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         border-left: 8px solid #4CAF50;
         margin: 10px 0 20px 0;
-        width: 100%; /* 親の block-container を広げたので 100% でOK */
-        box-sizing: border-box;
+        
+        width: 100% !important; /* 強制的に100% */
+        display: block !important;
     }
 
-    /* 問題文の文字設定 */
-    .question-container h3 {
-        font-size: 1.2rem;
-        text-align: left;
-        line-height: 1.5;
-        margin: 0;
-        word-wrap: break-word;
+    /* 3. ラジオボタン（選択肢）の余白を埋める */
+    div[role="radiogroup"] {
+        width: 100% !important;
     }
-
-    .info-container {
-        background-color: #e8f4ea;
-        padding: 1.5rem;
-        border-radius: 10px;
-        border-left: 5px solid #2e7d32;
-        margin-top: 15px;
-    }
+    
+    /* 4. 各選択肢のラベルを横いっぱいに広げる */
     div[role='radiogroup'] > label {
-        line-height: 2;
-        padding: 8px;
-        border-radius: 5px;
-        transition: 0.3s;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center;
+        background-color: #ffffff;
+        margin-bottom: 5px;
     }
-    div[role='radiogroup'] > label:hover { background-color: #f1f3f5; }
-    </style>
-    """, unsafe_allow_html=True)
+
+    /* 5. 回答ボタンも横いっぱいに（お好みで） */
+    .stButton > button {
+        width: 100% !important;
+    }
+
 
 # --- 2. モード管理の初期化 ---
 if "mode" not in st.session_state:
