@@ -7,30 +7,33 @@ st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡")
 st.markdown("""
     <style>
     .stApp { background-color: #f8f9fa; }
-        /* 問題ボックスのデザイン（ここを修正） */
-            /* 問題ボックスのデザイン */
-        /* 問題ボックスのデザイン */
+            /* ⚡【追加】スマホで左右にできる巨大な余白を強制解除する */
+    .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 2rem !important;
+        max-width: 100% !important;
+    }
+
+    /* 問題ボックスのデザイン（最新版） */
     .question-container {
         background-color: #ffffff;
-        padding: 1.2rem;       /* 内側の余白を少し詰める */
+        padding: 1.2rem;
         border-radius: 15px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         border-left: 8px solid #4CAF50;
-        
-        /* 余白問題を解決する設定 */
-        margin: 10px 0px 20px 0px; /* 外側の左右余白を0に */
-        width: auto;               /* 幅を自動計算にする */
-        min-width: 0;              /* 変な圧縮を防ぐ */
+        margin: 10px 0 20px 0;
+        width: 100%; /* 親の block-container を広げたので 100% でOK */
+        box-sizing: border-box;
     }
 
     /* 問題文の文字設定 */
     .question-container h3 {
-        font-size: 1.2rem;    /* 文字が大きすぎると改行されやすいので微調整 */
-        text-align: left;     /* 左揃えに戻して安定させる */
+        font-size: 1.2rem;
+        text-align: left;
         line-height: 1.5;
         margin: 0;
-        white-space: normal;  /* 文字がはみ出さないように自動改行させる */
-        word-wrap: break-word; /* 単語の途中で変に切れるのを防ぐ */
+        word-wrap: break-word;
     }
 
     .info-container {
