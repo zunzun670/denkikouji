@@ -147,7 +147,7 @@ st.session_state.questions = data.copy() # ここで session_state に入れる
         "source": "出典：令和7年度下期 第二種電気工事士試験（学科）"
     }
 ]
-st.session_state.questions = data.copy()
+            st.session_state.questions = data.copy()
             random.shuffle(st.session_state.questions)
             st.session_state.index = 0
             st.session_state.answered = False
