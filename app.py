@@ -53,7 +53,8 @@ if st.session_state.mode == "top":
     col1, col2 = st.columns(2)
     with col1:
         if st.button("🟢 まずはここから", use_container_width=True):
-            st.session_state.current_questions = [
+# --- ここで初期化を行う！ ---
+            data = [
     {
         "q":"一般住宅の屋内配線で「VVFケーブル」を使用する目的として最も適切なのはどれ？",
         "choices": [ "イ: 高電圧を長距離送電するため", "ロ: 屋内の固定配線に使うため", "ハ: 地中に直接埋設するため", "ニ: 防爆エリアで使用するため" ],
@@ -94,13 +95,21 @@ if st.session_state.mode == "top":
         "info": "部屋の電気をパチッとつけたり消したりするスイッチの記号は、「●」で表されるよ。\nちなみに「○」のように中が白い丸は、接続点（ジョイントボックス）などを指すことが多いので、色の塗られ方に注意しよう。",
     }
     ]
-            st.session_state.mode = "quiz" # クイズ画面へ
+st.session_state.questions = data.copy() # ここで session_state に入れる
+            random.shuffle(st.session_state.questions)
+            st.session_state.index = 0
+            st.session_state.answered = False
+            st.session_state.score = 0
+            st.session_state.combo = 0
+            
+            st.session_state.mode = "quiz" # モード切替
             st.rerun()
 
     with col2:
         if st.button("🔵 過去問に挑戦", use_container_width=True):
-            st.session_state.current_questions = [
-                    { "q": "図のような回路で、端子a-b間の合成抵抗[Ω]は。",
+# --- 過去問用のデータで初期化 ---
+            data = [ 
+     { "q": "図のような回路で、端子a-b間の合成抵抗[Ω]は。",
         "img": "images2.jpg", 
         "choices": ["イ. 1", "ロ. 2", "ハ. 3", "ニ. 4"],
         "correct": "ロ",
@@ -138,7 +147,14 @@ if st.session_state.mode == "top":
         "source": "出典：令和7年度下期 第二種電気工事士試験（学科）"
     }
 ]
-            st.session_state.mode = "quiz" # クイズ画面へ
+st.session_state.questions = data.copy()
+            random.shuffle(st.session_state.questions)
+            st.session_state.index = 0
+            st.session_state.answered = False
+            st.session_state.score = 0
+            st.session_state.combo = 0
+            
+            st.session_state.mode = "quiz"
             st.rerun()
 
 # --- 3. セッション管理の初期化 ---
