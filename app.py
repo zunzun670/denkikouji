@@ -9,26 +9,28 @@ st.markdown("""
     .stApp { background-color: #f8f9fa; }
         /* 問題ボックスのデザイン（ここを修正） */
             /* 問題ボックスのデザイン */
+        /* 問題ボックスのデザイン */
     .question-container {
         background-color: #ffffff;
-        padding: 1.2rem; /* 余白を少し削って文字領域を広げる */
+        padding: 1.2rem;       /* 内側の余白を少し詰める */
         border-radius: 15px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         border-left: 8px solid #4CAF50;
         
-        /* ここがポイント！ */
-        margin: 10px 0px 20px 0px; /* 左右の余白を0にして画面幅いっぱいに */
-        width: 100%;               /* 幅を100%にする */
-        box-sizing: border-box;    /* パディングを含めて100%にする */
+        /* 余白問題を解決する設定 */
+        margin: 10px 0px 20px 0px; /* 外側の左右余白を0に */
+        width: auto;               /* 幅を自動計算にする */
+        min-width: 0;              /* 変な圧縮を防ぐ */
     }
 
-    /* 問題文の文字サイズと位置 */
+    /* 問題文の文字設定 */
     .question-container h3 {
-        font-size: 1.4rem;      /* スマホで見やすいサイズに調整 */
-        text-align: justify;    /* 両端揃えにして右側のスカスカ感を防ぐ */
+        font-size: 1.2rem;    /* 文字が大きすぎると改行されやすいので微調整 */
+        text-align: left;     /* 左揃えに戻して安定させる */
         line-height: 1.5;
         margin: 0;
-        word-break: break-all;  /* 長い単語でも強制改行して右端まで使う */
+        white-space: normal;  /* 文字がはみ出さないように自動改行させる */
+        word-wrap: break-word; /* 単語の途中で変に切れるのを防ぐ */
     }
 
     .info-container {
