@@ -5,7 +5,7 @@ import random
 st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡", layout="wide")
 
 # --- 2. モダンCSS（スマホ余白対策版） ---
- st.markdown("""
+st.markdown("""
     <style>
     /* 1. Reset Streamlit default margins */
     [data-testid="stAppViewMain"] .main .block-container {
