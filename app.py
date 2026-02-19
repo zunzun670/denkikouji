@@ -4,7 +4,7 @@ import random
 # --- 1. ページ設定 & モダンCSS ---
 st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡")
 
-st.markdown(""
+st.markdown("""
     <style>
     .block-container {
         padding: 1.5rem 1rem !important;
