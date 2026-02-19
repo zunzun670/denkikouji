@@ -8,15 +8,29 @@ st.markdown("""
     <style>
     .stApp { background-color: #f8f9fa; }
         /* 問題ボックスのデザイン（ここを修正） */
-        .question-container {
+            /* 問題ボックスのデザイン */
+    .question-container {
         background-color: #ffffff;
-        padding: 1.5rem;
+        padding: 1.2rem; /* 余白を少し削って文字領域を広げる */
         border-radius: 15px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        border-left: 8px solid #4CAF50; /* 少し太くしてアクセントに */
-        margin: 10px auto 20px auto; /* 上下の余白を調整 */
-        display: block;
+        border-left: 8px solid #4CAF50;
+        
+        /* ここがポイント！ */
+        margin: 10px 0px 20px 0px; /* 左右の余白を0にして画面幅いっぱいに */
+        width: 100%;               /* 幅を100%にする */
+        box-sizing: border-box;    /* パディングを含めて100%にする */
     }
+
+    /* 問題文の文字サイズと位置 */
+    .question-container h3 {
+        font-size: 1.4rem;      /* スマホで見やすいサイズに調整 */
+        text-align: justify;    /* 両端揃えにして右側のスカスカ感を防ぐ */
+        line-height: 1.5;
+        margin: 0;
+        word-break: break-all;  /* 長い単語でも強制改行して右端まで使う */
+    }
+
     .info-container {
         background-color: #e8f4ea;
         padding: 1.5rem;
