@@ -96,14 +96,14 @@ if st.session_state.mode == "top":
     }
     ]
 st.session_state.questions = data.copy() # ここで session_state に入れる
-            random.shuffle(st.session_state.questions)
-            st.session_state.index = 0
-            st.session_state.answered = False
-            st.session_state.score = 0
-            st.session_state.combo = 0
+        random.shuffle(st.session_state.questions)
+        st.session_state.index = 0
+        st.session_state.answered = False
+        st.session_state.score = 0
+        st.session_state.combo = 0
             
-            st.session_state.mode = "quiz" # モード切替
-            st.rerun()
+        st.session_state.mode = "quiz" # モード切替
+        st.rerun()
 
     with col2:
         if st.button("🔵 過去問に挑戦", use_container_width=True):
