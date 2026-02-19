@@ -230,4 +230,4 @@ elif st.session_state.mode == "quiz":
             st.rerun()
 
 st.divider()
-st.caption("千里の道も一歩から")
+st.caption("keep it up! 毎日コツコツが合格への近道です")
