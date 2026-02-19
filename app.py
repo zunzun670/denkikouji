@@ -4,48 +4,86 @@ import random
 # --- 1. ページ設定 ---
 st.set_page_config(page_title="電工二種 合格ナビ", page_icon="⚡", layout="wide")
 
-# --- 2. CSS（余白対策 ＋ 解説枠の復活） ---
+# --- CSS部分に追加 ---
 st.markdown("""
 <style>
-/* スマホの巨大な余白を消す */
-[data-testid="stAppViewMain"] .main .block-container {
-    padding: 1.5rem 1rem !important;
-    max-width: 100% !important;
+/* 正解した時にふわっと浮き上がるアニメーション */
+@keyframes success-pop {
+    0% { transform: scale(0.9); opacity: 0; }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
-/* 問題ボックス（緑の左線） */
-.question-container {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border-left: 8px solid #4CAF50;
-    margin-bottom: 20px;
-    width: 100%;
+.stSuccess {
+    animation: success-pop 0.5s ease-out forwards;
+    border: 2px solid #4CAF50 !important;
+    background-color: #f0fff4 !important;
 }
 
-/* 解説ボックス（濃い緑の枠を復活！） */
-.info-container {
-    background-color: #e8f4ea;
-    padding: 1.5rem;
-    border-radius: 10px;
-    border-left: 8px solid #2e7d32;
-    margin-top: 15px;
-    width: 100%;
-}
-
-/* 選択肢の調整 */
-div[role='radiogroup'] > label {
-    line-height: 2;
-    padding: 10px;
-    border-radius: 8px;
-    transition: 0.3s;
-    background-color: #ffffff;
-    border: 1px solid #eee;
-    margin-bottom: 5px;
+/* ついでにボタンも押しやすい色に */
+.stButton > button {
+    background-color: #4CAF50;
+    color: white;
 }
 </style>
 """, unsafe_allow_html=True)
+
+# --- CSS部分に追加 ---
+st.markdown("""
+<style>
+/* 正解した時にふわっと浮き上がるアニメーション */
+@keyframes success-pop {
+    0% { transform: scale(0.9); opacity: 0; }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.stSuccess {
+    animation: success-pop 0.5s ease-out forwards;
+    border: 2px solid #4CAF50 !important;
+    background-color: #f0fff4 !important;
+}
+
+/* ついでにボタンも押しやすい色に */
+.stButton > button {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# --- 正解判定の部分（st.successのところ） ---
+if is_correct:
+    st.success("✨ 正解！おめでとう！ ✨")
+    # スマホで見れる環境なら風船も一応呼んでおく
+    st.balloons() 
+else:
+    st.error(f"残念！ 正解は「{current['correct']}」だよ。")
+# --- CSS部分に追加 ---
+st.markdown("""
+<style>
+/* 正解した時にふわっと浮き上がるアニメーション */
+@keyframes success-pop {
+    0% { transform: scale(0.9); opacity: 0; }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.stSuccess {
+    animation: success-pop 0.5s ease-out forwards;
+    border: 2px solid #4CAF50 !important;
+    background-color: #f0fff4 !important;
+}
+
+/* ついでにボタンも押しやすい色に */
+.stButton > button {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 
 # --- 3. セッション初期化 ---
 if "mode" not in st.session_state:
@@ -112,19 +150,38 @@ elif st.session_state.mode == "quiz":
                 st.session_state.selected = selected
                 st.session_state.answered = True
                 st.rerun()
-    else:
+        else:
         is_correct = st.session_state.selected.startswith(current["correct"])
         if is_correct:
-            st.success("✨ 正解！ ✨")
+            # 正解時にキラキラさせるアニメーション付きのメッセージ
+            st.markdown("""
+                <div style="
+                    animation: success-pop 0.5s ease-out;
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    background-color: #f0fff4;
+                    border: 2px solid #4CAF50;
+                    color: #1b5e20;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-bottom: 1rem;
+                ">
+                    ✨ 正解！おめでとう！ ✨
+                </div>
+            """, unsafe_allow_html=True)
             st.session_state.score += 1
             st.session_state.combo += 1
+            # スマホでも動く場合は風船も呼ぶ
+            st.balloons()
         else:
             st.error(f"残念！ 正解は「{current['correct']}」でした。")
             st.session_state.combo = 0
 
+        # 解説の緑枠（info-container）はそのまま維持
         st.markdown(f'<div class="info-container"><strong>💡 解説:</strong><br>{current["info"]}</div>', unsafe_allow_html=True)
 
-        if st.button("次の問題へ ➔"):
+        # 次の問題ボタンをスマホで押しやすく（幅いっぱい）
+        if st.button("次の問題へ ➔", use_container_width=True):
             st.session_state.index += 1
             st.session_state.answered = False
             st.rerun()
