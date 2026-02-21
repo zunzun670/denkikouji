@@ -36,17 +36,24 @@ st.markdown("""
     .stApp {
         background-color: #f8f9fa;
     }
-    /* 問題ボックス（余白をスマホ向けに最適化） */
-    .question-container {
-        background-color: #ffffff;
-        padding: 1.2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        border-left: 5px solid #4CAF50;
-        margin-bottom: 10px;
-        width: 100%;
-        box-sizing: border-box;
-    }
+/* 問題ボックス */
+        .question-container {
+            background-color: #ffffff;
+            padding: 1.2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 5px solid #4CAF50;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* ★ここを追加！問題文の文字サイズを調整（選択肢より約2pt大きく） */
+        .question-container h3 {
+            font-size: 1.15rem !important; 
+            margin: 0;
+            line-height: 1.4;
+        }
     /* 解説ボックス */
     .info-container {
         background-color: #e8f4ea;
