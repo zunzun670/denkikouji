@@ -305,7 +305,8 @@ elif st.session_state.mode == "quiz":
         except:
             st.warning("画像が見つかりませんでした")
 
-selected = st.radio(
+# ラベルを消して、選択肢を表示（変数の名前をcurrentに合わせたよ）
+    selected = st.radio(
         "選択肢を選んでね", 
         current["choices"], 
         index=None, 
@@ -314,7 +315,8 @@ selected = st.radio(
         label_visibility="collapsed"
     )
 
-if not st.session_state.answered:
+    # ここからのインデント（左の空白）を合わせるのが大事！
+    if not st.session_state.answered:
         if st.button("回答を確定する", type="primary", use_container_width=True):
             if selected:
                 st.session_state.selected = selected
