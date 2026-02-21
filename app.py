@@ -305,12 +305,14 @@ elif st.session_state.mode == "quiz":
         except:
             st.warning("画像が見つかりませんでした")
 
- user_answer = st.radio(
-    "", 
-    q["options"], 
-    key=q["question"], 
-    label_visibility="collapsed"
-)
+selected = st.radio(
+        "選択肢を選んでね", # ここに文字が入っていても
+        current["choices"], 
+        index=None, 
+        key=f"q_{st.session_state.index}", 
+        disabled=st.session_state.answered,
+        label_visibility="collapsed"  # これで上の文字が完全に消えるよ！
+    )
 
     if not st.session_state.answered:
         if st.button("回答を確定する", type="primary", use_container_width=True):
